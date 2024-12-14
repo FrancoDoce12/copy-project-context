@@ -13,33 +13,30 @@ const fs = vscode.workspace.fs
 
 function activate(context) {
 
-	// Use the console to output diagnostic information (console.log) and errors (console.error)
-	// This line of code will only be executed once when your extension is activated
-	console.log('Congratulations, your extension "copy-project-structure" is now active!');
+	const setting = vscode.workspace.getConfiguration('copy-project-structure');
 
 	// The command has been defined in the package.json file
-	// Now provide the implementation of the command with  registerCommand
+	// Now provide the implementation of the command with registerCommand
 	// The commandId parameter must match the command field in package.json
-	const disposable = vscode.commands.registerCommand('copy-project-structure.helloWorld', async function () {
+	const disposable = vscode.commands.registerCommand('copy-project-structure.copy-project-structure', async function () {
 		// The code you place here will be executed every time your command is executed
 
-		// Display a message box to the user
-		vscode.window.showInformationMessage('Hello World from copy-project-structure!');
-		console.log("hi i am executing this command!")
-
-
 		const workspaceFolders = vscode.workspace.workspaceFolders;
-		
-		let proyectStructure = "";
 
-		vscode.window.showInformationMessage("copying the project structure");
+		let proyectStructure = "";
 
 		for (let i = 0; i < workspaceFolders.length; i++) {
 			const workspaceFolder = workspaceFolders[i];
 
+			// those arguments are passed as reference to a recursive function
+			const refObj = {
+				mainFolder: true,
+				setting
+			}
+
 			proyectStructure = proyectStructure.concat(`--- Workspace: ${vscode.workspace.name} ---\n`);
 
-			proyectStructure = proyectStructure.concat(await getFolderStructure(workspaceFolder.name, workspaceFolder.uri));
+			proyectStructure = proyectStructure.concat(await getFolderStructure(workspaceFolder.name, workspaceFolder.uri, refObj));
 
 			proyectStructure = proyectStructure.concat("\n");
 		}
@@ -48,30 +45,44 @@ function activate(context) {
 
 		vscode.window.showInformationMessage("Project structure copied on the clipboard!");
 
-		console.log(context.globalState.get("key"));
 	});
 
 	context.subscriptions.push(disposable);
 }
 
 
-async function getFolderStructure(folderName, uri) {
+async function getFolderStructure(folderName, uri, refObj) {
+
 	const directoryFiles = await fs.readDirectory(uri);
 
 	let structure = "📂 " + folderName + "\n";
 
-	if (directoryFiles.length > 30) {
-		structure = structure.concat("More than 30 items... \n");
+	let itemsToIgnore = refObj.setting.ignoreFilesOnAllFolders
+
+	if (refObj.mainFolder) {
+		refObj.mainFolder = false;
+		itemsToIgnore = itemsToIgnore.concat(refObj.setting.ignoreFilesOnWorkspaceFolder);
+	} else {
+		itemsToIgnore = itemsToIgnore.concat(refObj.setting.ignoreFilesOnSubFolders);
+	}
+
+
+	if (directoryFiles.length > refObj.setting.maxNumberOfItemsPerFolder) {
+		structure = structure.concat(`More than ${refObj.setting.maxNumberOfItemsPerFolder} items... \n`);
 	} else {
 
 		for (const index in directoryFiles) {
 			const item = directoryFiles[index];
 
+			// if it's find on the itemsToIgnore list
+			// jumps to the next loop iteration
+			if (itemsToIgnore.includes(item[0])){continue}
+
+
 			if (item[1] == vscode.FileType.Directory) {
 
-				const newUri = vscode.Uri.joinPath(uri, item[0]);
 
-				structure = structure.concat(await getFolderStructure(item[0] ,newUri));
+				structure = structure.concat(await getFolderStructure(item[0], vscode.Uri.joinPath(uri, item[0]), refObj));
 
 				// we need to delete all the multiples tab sapces created at 
 				// the last new line of the string,
@@ -91,7 +102,6 @@ async function getFolderStructure(folderName, uri) {
 	structure = structure.replaceAll("\n", "\n    ");
 
 	return structure;
-
 }
 
 

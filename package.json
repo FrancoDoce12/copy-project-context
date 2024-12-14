@@ -9,13 +9,15 @@
   "categories": [
     "Other"
   ],
-  "activationEvents": [],
+  "activationEvents": [
+    "onStartupFinished"
+  ],
   "main": "./extension.js",
   "contributes": {
     "menus": {
       "explorer/context": [
         {
-          "command": "copy-project-structure.helloWorld",
+          "command": "copy-project-structure.copy-project-structure",
           "when": "workspaceFolderCount > 0",
           "group": "6_copypath"
         }
@@ -50,12 +52,8 @@
     },
     "commands": [
       {
-        "command": "copy-project-structure.extencion-test",
-        "title": "extencion Test"
-      },
-      {
-        "command": "copy-project-structure.helloWorld",
-        "title": "Hello World"
+        "command": "copy-project-structure.copy-project-structure",
+        "title": "Copy Project Structure"
       }
     ]
   },
