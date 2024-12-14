@@ -12,12 +12,53 @@
   "activationEvents": [],
   "main": "./extension.js",
   "contributes": {
-    "commands": [{
-      "command": "copy-project-structure.helloWorld",
-      "title": "Hello World"
-    }]
+    "menus": {
+      "explorer/context": [
+        {
+          "command": "copy-project-structure.helloWorld",
+          "when": "workspaceFolderCount > 0",
+          "group": "6_copypath"
+        }
+      ]
+    },
+    "configuration": {
+      "title": "Copy ProJect Structure",
+      "properties": {
+        "copy-project-structure.ignoreFilesOnAllFolders": {
+          "type": "array",
+          "default": [
+            ".git"
+          ],
+          "description": "List of folders and files to ignore in all folders"
+        },
+        "copy-project-structure.ignoreFilesOnWorkspaceFolder": {
+          "type": "array",
+          "default": [],
+          "description": "List of folders and files to ignore in the main Workspace Folder\nNOTE: If you have multiple workspaces, this configuration will affect each workspace folder"
+        },
+        "copy-project-structure.ignoreFilesOnSubFolders": {
+          "type": "array",
+          "default": [],
+          "description": "List of folders and files to ignore in the subfolders"
+        },
+        "copy-project-structure.maxNumberOfItemsPerFolder": {
+          "type": "integer",
+          "default": 30,
+          "description": "Maximum number of items (folders and files) to show in a folder"
+        }
+      }
+    },
+    "commands": [
+      {
+        "command": "copy-project-structure.extencion-test",
+        "title": "extencion Test"
+      },
+      {
+        "command": "copy-project-structure.helloWorld",
+        "title": "Hello World"
+      }
+    ]
   },
-  
   "scripts": {
     "lint": "eslint .",
     "pretest": "npm run lint",
