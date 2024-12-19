@@ -1,8 +1,8 @@
 {
   "name": "copy-project-context",
   "displayName": "copy-project-context",
-  "description": "Adds a new option button to copy the proyect structure to your clipboard",
-  "version": "1.0.1",
+  "description": "Adds a new option button to copy the proyect structure to your clipboard, perfect for gibing the proyect context to your favorite IA",
+  "version": "1.0.2",
   "engines": {
     "vscode": "^1.95.0"
   },
@@ -22,17 +22,17 @@
           "group": "6_copypath"
         },
         {
-          "command": "copy-project-context.addfilePathToContext",
+          "command": "copy-project-context.add-file-path-to-context",
           "when": "!explorerResourceIsFolder",
           "group": "6_copypath"
         },
         {
-          "command": "copy-project-context.deleteFilePathsOfContext",
+          "command": "copy-project-context.delete-file-paths-of-context",
           "when": "workspaceFolderCount > 0",
           "group": "7_modification"
         },
         {
-          "command": "copy-project-context.showAllFilePathsFromContext",
+          "command": "copy-project-context.show-all-file-paths-from-context",
           "when": "workspaceFolderCount > 0",
           "group": "7_modification"
         }
@@ -76,15 +76,15 @@
         "title": "Copy Project Context"
       },
       {
-        "command": "copy-project-context.addfilePathToContext",
+        "command": "copy-project-context.add-file-path-to-context",
         "title": "Add File Content to Proyect Context"
       },
       {
-        "command": "copy-project-context.deleteFilePathsOfContext",
+        "command": "copy-project-context.delete-file-paths-of-context",
         "title": "Delete All Files From Proyect Context"
       },
       {
-        "command": "copy-project-context.showAllFilePathsFromContext",
+        "command": "copy-project-context.show-all-file-paths-from-context",
         "title": "Show all Files Added to the Project Context"
       }
     ]

@@ -20,7 +20,7 @@ function activate(context) {
 	// The command has been defined in the package.json file
 	// Now provide the implementation of the command with registerCommand
 	// The commandId parameter must match the command field in package.json
-	const disposable = vscode.commands.registerCommand('copy-project-context.copy-project-context', async function () {
+	const copyProjectContext = vscode.commands.registerCommand('copy-project-context.copy-project-context', async function () {
 
 		const workspaceFolders = vscode.workspace.workspaceFolders;
 
@@ -52,7 +52,7 @@ function activate(context) {
 
 
 
-	const disposableAddPathForContext = vscode.commands.registerCommand('copy-project-context.addfilePathToContext', async (uri) => {
+	const addPathForContext = vscode.commands.registerCommand('copy-project-context.add-file-path-to-context', async (uri) => {
 
 		const fileName = getFileNameFromPath(uri.path);
 
@@ -77,7 +77,7 @@ function activate(context) {
 	});
 
 
-	const deleteFilePathFromContext = vscode.commands.registerCommand('copy-project-context.deleteFilePathsOfContext', async () => {
+	const deleteFilePathFromContext = vscode.commands.registerCommand('copy-project-context.delete-file-paths-of-context', async () => {
 
 		const length = wsSetting.filePathsToContext.length
 
@@ -98,7 +98,7 @@ function activate(context) {
 	});
 
 
-	const showAllFilePathsFromContext = vscode.commands.registerCommand('copy-project-context.showAllFilePathsFromContext', () => {
+	const showAllFilePathsFromContext = vscode.commands.registerCommand('copy-project-context.show-all-file-paths-from-context', () => {
 		const filePaths = wsSetting.filePathsToContext;
 		const length = filePaths.length;
 
@@ -112,7 +112,6 @@ function activate(context) {
 
 		else if (length > 1) { conector = "," }
 
-
 		for (const i in filePaths) {
 			const fileUri = filePaths[i];
 
@@ -122,10 +121,11 @@ function activate(context) {
 		vscode.window.showInformationMessage(message);
 	})
 
+
 	context.subscriptions.push(showAllFilePathsFromContext);
 	context.subscriptions.push(deleteFilePathFromContext);
-	context.subscriptions.push(disposable);
-	context.subscriptions.push(disposableAddPathForContext);
+	context.subscriptions.push(copyProjectContext);
+	context.subscriptions.push(addPathForContext);
 }
 
 
