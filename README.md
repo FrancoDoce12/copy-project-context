@@ -38,7 +38,7 @@ This extension adds 4 commands each with one button:
 ---
 #### Gift showing all the features and use of the extension
 
-![Video gift showing the features of this extension](features/features.gif)
+![Video gift showing the features of this extension](https://raw.githubusercontent.com/FrancoDoce12/small-projects-media/master/features.gif)
 
 ####
 
