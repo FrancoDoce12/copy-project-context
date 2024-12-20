@@ -7,6 +7,7 @@
   "engines": {
     "vscode": "^1.95.0"
   },
+  "license":"UNLICENSED",
   "categories": [
     "Other"
   ],
@@ -101,6 +102,9 @@
     "lint": "eslint .",
     "pretest": "npm run lint",
     "test": "vscode-test"
+  },
+  "sponsor": {
+    "url": "https://www.buymeacoffee.com/FrancoDoce12"
   },
   "devDependencies": {
     "@types/vscode": "^1.95.0",
