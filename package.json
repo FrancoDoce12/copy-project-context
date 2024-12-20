@@ -3,11 +3,11 @@
   "displayName": "Copy Project Context",
   "description": "A easy tool for vs code that allows you to copy your project structure and files in a fast way to use as context for asking to your favorite IA model or anything else.",
   "version": "1.0.2",
-  "publisher" : "FrancoDoce12",
+  "publisher": "FrancoDoce12",
   "engines": {
     "vscode": "^1.95.0"
   },
-  "license":"UNLICENSED",
+  "license": "UNLICENSED",
   "categories": [
     "Other"
   ],
@@ -106,6 +106,10 @@
   "icon": "./iconExtension.png",
   "sponsor": {
     "url": "https://www.buymeacoffee.com/FrancoDoce12"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/FrancoDoce12/copy-project-context-vs-code-extension"
   },
   "devDependencies": {
     "@types/vscode": "^1.95.0",
