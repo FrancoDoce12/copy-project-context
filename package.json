@@ -103,7 +103,7 @@
     "pretest": "npm run lint",
     "test": "vscode-test"
   },
-  "icon": "./iconExtension.png",
+  "icon": "iconExtension.png",
   "sponsor": {
     "url": "https://www.buymeacoffee.com/FrancoDoce12"
   },
