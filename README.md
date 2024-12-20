@@ -34,8 +34,9 @@ This extension adds 4 commands each with one button:
 - **Description**: Displays a list of all files currently added to the project context.  
 - **Button Visibility**: Shown when right-clicking on any part of the file explorer. 
 
-
-#### Gift showing all the features
+####
+---
+#### Gift showing all the features and use of the extension
 
 ![Video gift showing the features of this extension](features/features.gif)
 
