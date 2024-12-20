@@ -56,3 +56,7 @@ This extension contributes the following settings:
 
 No known issues for now.
 
+### Support Me
+
+[![Buy Me a Coffee](https://img.shields.io/badge/Buy%20Me%20a%20Coffee-FCC624?style=for-the-badge&logo=buy-me-a-coffee&logoColor=black)](https://www.buymeacoffee.com/FrancoDoce12)
+
