@@ -3,11 +3,19 @@
   "displayName": "Copy Project Context",
   "description": "A easy tool for vs code that allows you to copy your project structure and files in a fast way to use as context for asking to your favorite IA model or anything else.",
   "version": "1.0.2",
+  "publisher" : "FrancoDoce12",
   "engines": {
     "vscode": "^1.95.0"
   },
   "categories": [
     "Other"
+  ],
+  "keywords": [
+    "project",
+    "structure",
+    "context",
+    "copy",
+    "clipboard"
   ],
   "activationEvents": [
     "onStartupFinished"
