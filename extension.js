@@ -35,7 +35,7 @@ function activate(context) {
 				setting: wsSetting
 			}
 
-			proyectStructure = proyectStructure.concat(`--- Workspace: ${vscode.workspace.name} ---\n`);
+			proyectStructure = proyectStructure.concat(`--- Workspace: ${vscode.workspace.name} ---\n\n`);
 
 			proyectStructure = proyectStructure.concat(await getFolderStructure(workspaceFolder.name, workspaceFolder.uri, refObj));
 
@@ -202,7 +202,7 @@ async function getFilesContent() {
 		const fileName = getFileNameFromPath(uri.path);
 
 		// start the string value with a top line with the file name:
-		let fileContent = filesContent.concat(`--${fileName} content:\n`);
+		let fileContent = filesContent.concat(`\n"${fileName}" file content:\n\n`);
 
 		try {
 			const fileData = await fs.readFile(uri);
@@ -221,7 +221,7 @@ async function getFilesContent() {
 		}
 
 		// make shure to have a good spacing at the end of the file
-		filesContent = (fileContent.trimEnd()).concat("\n\n");
+		filesContent = (fileContent.trimEnd()).concat("\n\n\n");
 	}
 
 	// we remove the broken paths, or the problematics ones
