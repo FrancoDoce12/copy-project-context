@@ -35,7 +35,11 @@ This extension adds 4 commands each with one button:
 - **Button Visibility**: Shown when right-clicking on any part of the file explorer. 
 
 
-[Video gift showing the features of this extension](features\features.gif)
+#### Gift showing all the features
+
+![Video gift showing the features of this extension](features/features.gif)
+
+####
 
 ## Extension Settings
 
@@ -43,11 +47,11 @@ This extension contributes the following settings:
 
 * `copy-project-context.ignoreFilesOnAllFolders`: A list of file names to ignore in all the project folders.
 * `copy-project-context.filePathsToContext`: The list of uris objects of each file added to the context.
-* `copy-project-context.ignoreFilesOnWorkspaceFolder`: A list of file names to ignore only in the workspace main folder
-* `copy-project-context.ignoreFilesOnSubFolders`: A list of file names to ignore on the sub folders of the project.
-* `copy-project-context.maxNumberOfItemsPerFolder`: The maximun number of items to analyze per folder. if a folder have more thean this number of items (folders and files), the folder content will be ignored at the context.
+* `copy-project-context.ignoreFilesOnWorkspaceFolder`: A list of file names to ignore only in the workspace's main folder.
+* `copy-project-context.ignoreFilesOnSubFolders`: A list of file names to ignore in the project's subfolders.
+* `copy-project-context.maxNumberOfItemsPerFolder`: The maximum number of items to analyze per folder. If a folder contains more than this number of items (folders and files), its content will be ignored in the context.
 
 ## Known Issues
 
-No known isssues for now.
+No known issues for now.
 
