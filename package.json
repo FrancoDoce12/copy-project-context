@@ -12,11 +12,11 @@
     "Other"
   ],
   "keywords": [
+    "tree",
+    "context",
     "project",
     "structure",
-    "context",
-    "copy",
-    "clipboard"
+    "copy"
   ],
   "activationEvents": [
     "onStartupFinished"
